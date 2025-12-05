@@ -5,13 +5,13 @@
   </a>
 
   <h2 class="text-center mb-3">🚲 Registro de Bicicletas</h2>
-  <p class="text-center fw-bold"
+  <p *ngIf="mensaje" class="text-center fw-bold"
      [ngClass]="{
-       'text-success': mensaje.startsWith('✅'),
-       'text-danger': mensaje.startsWith('❌'),
-       'text-warning': mensaje.startsWith('⚠️')
+       'text-success': mensaje.type === 'success',
+       'text-danger': mensaje.type === 'error',
+       'text-warning': mensaje.type === 'warning'
      }">
-    {{ mensaje }}
+    {{ mensaje.text }}
   </p>
 
   <!-- Paso 1: Buscar estudiante -->
@@ -85,6 +85,28 @@
   </div>
 </div>
 
+<!-- Paso 5: Pantalla de Éxito -->
+<div *ngIf="pasoActual === 'exito'" class="container p-4 text-center">
+  <div class="card p-4 shadow-sm border-success">
+    <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+    <h4 class="mt-3">¡Operación Exitosa!</h4>
+    <p>{{ mensaje?.text }}</p>
+
+    <div *ngIf="bicicletaDeExito" class="card-body text-start bg-light rounded mb-3">
+      <h5 class="card-title">Detalles de la Bicicleta</h5>
+      <ul class="list-unstyled">
+        <li><strong>Marca:</strong> {{ bicicletaDeExito.marca }}</li>
+        <li><strong>Modelo:</strong> {{ bicicletaDeExito.modelo || 'N/A' }}</li>
+        <li><strong>Color:</strong> {{ bicicletaDeExito.color }}</li>
+        <li><strong>Estacionamiento:</strong> {{ bicicletaDeExito.estacionamiento }}</li>
+      </ul>
+    </div>
+
+    <button class="btn btn-primary w-100" (click)="reiniciarFlujo()">
+      Registrar otra bicicleta
+    </button>
+  </div>
+</div>
 <!-- Generador de QR -->
 <div class="container p-4 mt-4">
   <h4 class="mb-3">🔖 Generador de QR (redirige a Registro por Estudiante)</h4>

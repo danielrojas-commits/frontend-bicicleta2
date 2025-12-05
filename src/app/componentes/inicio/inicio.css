@@ -1,11 +1,51 @@
+.title-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.card {
+  background-color: rgb(224, 225, 228) !important; 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .hover-card {
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
 
 .hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-card-info:hover {
+  border-color: rgba(13, 202, 240, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(13, 202, 240, 0.4);
+}
+
+.hover-card-success:hover {
+  border-color: rgba(25, 135, 84, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(25, 135, 84, 0.4);
+}
+
+.hover-card-primary:hover {
+  border-color: rgba(13, 110, 253, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(13, 110, 253, 0.4);
+}
+
+.hover-card-secondary:hover {
+  border-color: rgba(108, 117, 125, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(108, 117, 125, 0.4);
+}
+
+.hover-card-danger:hover {
+  border-color: rgba(220, 53, 69, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(220, 53, 69, 0.4);
 }
 
 .card-title {
@@ -18,4 +58,5 @@
 
 .btn {
   width: 100%;
+  font-weight: 500;
 }
