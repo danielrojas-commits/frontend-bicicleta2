@@ -1,0 +1,80 @@
+<div class="container">
+  <h1>Gestión de Bicicletas - Establecimiento</h1>
+
+  <section class="establecimiento-info">
+    <h2>Información del Establecimiento</h2>
+    <div *ngIf="establecimiento; else noEstablecimiento">
+      <p><strong>Nombre:</strong> {{ establecimiento.nombre }}</p>
+      <p><strong>Dirección:</strong> {{ establecimiento.direccion }}</p>
+      <p><strong>Teléfono:</strong> {{ establecimiento.telefono }}</p>
+    </div>
+    <ng-template #noEstablecimiento>
+      <p>Cargando información del establecimiento...</p>
+    </ng-template>
+  </section>
+
+  <section class="estudiantes-info">
+    <h2>Información de los Estudiantes</h2>
+    <div *ngIf="estudiantes.length > 0; else noEstudiantes">
+      <ul>
+        <li *ngFor="let estudiante of estudiantes">
+          {{ estudiante.nombre }} - {{ estudiante.email }}
+        </li>
+      </ul>
+    </div>
+    <ng-template #noEstudiantes>
+      <p>No hay estudiantes registrados</p>
+    </ng-template>
+  </section>
+  <section class="bicicletas-info">
+    <button class="btn-bicicletas" (click)="toggleBicicletas()">
+      {{ showBicicletas ? 'Ocultar' : 'Mostrar' }} Información de Bicicletas
+    </button>
+
+    <div *ngIf="showBicicletas" class="bicicletas-content">
+      <h2>Selecciona una Fecha</h2>
+      <div class="date-input">
+        <label for="dateInput">Fecha:</label>
+        <input 
+          type="date" 
+          id="dateInput" 
+          [(ngModel)]="selectedDate"
+          [max]="today"
+        />
+        <button class="btn-cargar" (click)="cargarBicicletas()">Cargar Bicicletas</button>
+      </div>
+
+      <div *ngIf="error" class="error-message">
+        {{ error }}
+      </div>
+
+      <div *ngIf="loading" class="loading">
+        Cargando bicicletas...
+      </div>
+
+      <div *ngIf="bicicletas.length > 0 && !loading" class="bicicletas-list">
+        <h3>Bicicletas del {{ selectedDate | date: 'dd/MM/yyyy' }}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Modelo</th>
+              <th>Marca</th>
+              <th>Estado</th>
+              <th>Ubicación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bicicleta of bicicletas">
+              <td>{{ bicicleta.id }}</td>
+              <td>{{ bicicleta.modelo }}</td>
+              <td>{{ bicicleta.marca }}</td>
+              <td>{{ bicicleta.estado }}</td>
+              <td>{{ bicicleta.ubicacion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>

@@ -13,6 +13,7 @@ import { ListarAcceso } from './componentes/listar-acceso/listar-acceso';
 import { RegistrarEstablecimiento } from './componentes/registrar-establecimiento/registrar-establecimiento';
 import { ListarEstablecimiento } from './componentes/listar-establecimiento/listar-establecimiento';
 import { BicicletaExito } from './componentes/bicicleta-exito/bicicleta-exito';
+import { EstablecimientoListarBicicletaComponent } from './componentes/establecimiento-listar-bicicleta/establecimiento-listar-bicicleta.component';
 
 export const routes: Routes = [
     {
@@ -71,5 +72,9 @@ export const routes: Routes = [
     {
         path: "listar-establecimiento",
         component: ListarEstablecimiento
+    },
+    {
+        path: 'establecimiento-listar-bicicleta',
+        component: EstablecimientoListarBicicletaComponent
     }
 ];
